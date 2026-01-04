@@ -8,7 +8,10 @@
     "test": "mocha tests --recursive --timeout 5000",
     "test-single": "mocha",
     "shell": "node --experimental-repl-await ./shell.js",
-    "generate-docs": "npx jsdoc --configure .jsdoc.json --verbose"
+    "generate-docs": "npx jsdoc --configure .jsdoc.json --verbose",
+    "api": "node bot-server.js",
+    "bot": "node test-whatsapp.js",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -30,11 +33,17 @@
   "homepage": "https://wwebjs.dev/",
   "dependencies": {
     "@pedroslopez/moduleraid": "^5.0.2",
+    "axios": "^1.13.2",
+    "cron": "^4.4.0",
+    "express": "^5.2.1",
     "fluent-ffmpeg": "2.1.3",
     "mime": "^3.0.0",
     "node-fetch": "^2.6.9",
     "node-webpmux": "3.1.7",
-    "puppeteer": "^24.31.0"
+    "puppeteer": "^24.31.0",
+    "qrcode": "^1.5.4",
+    "qrcode-terminal": "^0.12.0",
+    "socket.io": "^4.8.3"
   },
   "devDependencies": {
     "@types/node-fetch": "^2.5.12",
