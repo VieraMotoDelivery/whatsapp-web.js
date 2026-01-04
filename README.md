@@ -153,3 +153,77 @@ limitations under the License.
 [digitalocean]: https://m.do.co/c/73f906a36ed4
 [contributing]: https://github.com/pedroslopez/whatsapp-web.js/blob/main/CODE_OF_CONDUCT.md
 [whatsapp]: https://whatsapp.com
+
+---
+
+## 🚀 Servidor API REST + Bot Automático (VieraMotoDelivery)
+
+Este repositório inclui um servidor customizado que integra API REST com Bot automático em uma única instância.
+
+### Funcionalidades Adicionais
+
+- ✅ **API REST** - Envie mensagens via HTTP (Insomnia, Postman, cURL)
+- ✅ **Bot Automático** - Respostas automáticas com lógica de negócio
+- ✅ **Interface Web** - QR Code e status em tempo real
+- ✅ **Uma única autenticação** - Sem conflitos, tudo integrado
+- ✅ **Lógica de negócio** - Cadastros, entregas, middlewares personalizados
+
+### Início Rápido
+
+```bash
+# Instalar dependências
+npm install
+
+# Iniciar servidor unificado
+npm start
+
+# Acesse http://localhost:7005
+# Escaneie o QR Code
+# Aguarde 20 segundos (warmup)
+# Pronto para usar!
+```
+
+### API Endpoints
+
+#### POST /send-message
+Enviar mensagem para número individual
+
+```bash
+curl -X POST http://localhost:7005/send-message \
+  -H "Content-Type: application/json" \
+  -d '{"number": "5511999999999", "message": "Olá!"}'
+```
+
+#### POST /send-group-message
+Enviar mensagem para grupo
+
+```bash
+curl -X POST http://localhost:7005/send-group-message \
+  -H "Content-Type: application/json" \
+  -d '{"name": "Meu Grupo", "message": "Olá pessoal!"}'
+```
+
+#### GET /status
+Verificar status do sistema
+
+```bash
+curl http://localhost:7005/status
+```
+
+### Documentação Completa
+
+- [INSOMNIA-EXAMPLES.md](./INSOMNIA-EXAMPLES.md) - Exemplos detalhados para Insomnia
+- [CLAUDE.md](./CLAUDE.md) - Documentação do projeto customizado
+
+### Arquivos Customizados
+
+- `server.js` - Servidor unificado (API + Bot)
+- `bot-server.js` - Servidor API separado (opcional)
+- `test-whatsapp.js` - Bot com lógica de negócio
+- `src/` - Módulos de lógica de negócio (fisica, empresa, middlewares, etc)
+
+### Autor da Customização
+
+**VieraMotoDelivery**
+- Email: vieiramdelivery@gmail.com
+- GitHub: [@VieraMotoDelivery](https://github.com/VieraMotoDelivery)
