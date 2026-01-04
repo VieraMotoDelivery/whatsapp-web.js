@@ -116,10 +116,16 @@ setInterval(cleanupOldEntries, 600000);
 const initializeClient = () => {
     console.log('🔄 Inicializando cliente WhatsApp...');
 
+    // Detectar se está no Railway ou outro ambiente sem display
+    const isProduction = process.env.RAILWAY_ENVIRONMENT || process.env.NODE_ENV === 'production';
+
+    console.log('📍 AMBIENTE:', isProduction ? 'PRODUÇÃO (Railway)' : 'DESENVOLVIMENTO (Local)');
+    console.log('🖥️  Modo headless:', isProduction ? 'true (sem interface)' : 'false (com interface)');
+
     client = new Client({
         authStrategy: new LocalAuth(),
         puppeteer: {
-            headless: false,
+            headless: isProduction ? true : false,
             args: [
                 '--no-sandbox',
                 '--disable-setuid-sandbox',
@@ -129,6 +135,10 @@ const initializeClient = () => {
                 '--no-zygote',
                 '--disable-gpu'
             ]
+        },
+        webVersionCache: {
+            type: 'remote',
+            remotePath: 'https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/2.3000.1030410331-alpha.html'
         }
     });
 
